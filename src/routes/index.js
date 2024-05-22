@@ -8,6 +8,11 @@ const {
   getCategories,
   postCategory,
 } = require("../controllers/categories.controller");
+const {
+  deleteFeature,
+  getFeatures,
+  postFeature,
+} = require("../controllers/features.controller");
 
 const router = require("express").Router();
 
@@ -20,5 +25,10 @@ router.post("/createBrand", postBrand);
 router.delete("/ProductCategoryList/:categoryID", deleteCategory);
 router.get("/ProductCategoryList", getCategories);
 router.post("/ProductCategoryList", postCategory);
+
+// ? Features
+router.delete("/Features/:featureID", deleteFeature);
+router.get("/Features", getFeatures);
+router.post("/Features", postFeature);
 
 module.exports = router;
