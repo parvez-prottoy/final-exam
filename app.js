@@ -1,6 +1,7 @@
 const express = require("express");
 const app = new express();
 const { notFoundHandler, errorHandler } = require("./src/utils/error");
+const baseRoute = require("./src/routes/base.route");
 
 // ? connected mongoDB
 const connectDB = require("./config/db").apply();
@@ -27,6 +28,9 @@ app.use([
 const limiter = rateLimit({ windowMs: 15 * 60 * 1000, max: 3000 });
 app.use(limiter);
 app.set("etag", false);
+
+// ? Routes
+app.use("/", baseRoute);
 
 // ? error handler
 app.use(notFoundHandler);
