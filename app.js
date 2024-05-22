@@ -2,6 +2,7 @@ const express = require("express");
 const app = new express();
 const { notFoundHandler, errorHandler } = require("./src/utils/error");
 const baseRoute = require("./src/routes/base.route");
+const routes = require("./src/routes/index");
 
 // ? connected mongoDB
 const connectDB = require("./config/db").apply();
@@ -31,6 +32,7 @@ app.set("etag", false);
 
 // ? Routes
 app.use("/", baseRoute);
+app.use("/api/v1", routes);
 
 // ? error handler
 app.use(notFoundHandler);
